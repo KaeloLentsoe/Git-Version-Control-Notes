@@ -1,4 +1,4 @@
-## What is Git?
+# What is Git?
 
 **Git** is a distributed version control system (DVCS) designed to manage projects with speed and efficiency, particularly emphasizing distributed development. It was created by Linus Torvalds in 2005 for development of the Linux kernel, but has since become widely adopted across the software development industry.
 
@@ -20,7 +20,7 @@
 
 
 
-# Benefits of using Git
+## Benefits of using Git
 
 Here's a more detailed elaboration on the major benefits of Git:
 
@@ -44,7 +44,7 @@ Here's a more detailed elaboration on the major benefits of Git:
 
 *Overall, these benefits contribute to Git's popularity and effectiveness in modern software development workflows, empowering developers to work efficiently, collaborate seamlessly, and maintain control over their codebase.*
 
-# How to install git? 
+## How to install git? 
 
 This are  general steps to install Git on different operating systems:
 
@@ -81,7 +81,7 @@ After installing Git, you can verify the installation by opening a terminal (Com
 
 *You've successfully installed Git on your system. You can now start using Git for version control in your projects.*
 
-# How to configure Git? 
+## How to configure Git? 
 
 Configuring Git involves setting up your identity (name and email address) and some preferences. Here's how you can configure Git:
 
@@ -131,3 +131,100 @@ Configuring Git involves setting up your identity (name and email address) and s
        ```
 
 *These are just some basic configurations to get you started. You can explore more Git configurations and customize them according to your preferences and workflow requirements.*
+
+## Setting your editor
+
+To set your preferred text editor for Git, you can use the `core.editor` configuration option. Here's how to do it:
+
+1. **Using Command Line**:
+   - Open a terminal or command prompt.
+   - Run the following command, replacing `"editor"` with the command or path to your preferred text editor (e.g., `"vim"`, `"nano"`, `"code"`, `"notepad++"`):
+     ```
+     git config --global core.editor "editor"
+     ```
+
+2. **Examples**:
+   - If you prefer Vim:
+     ```
+     git config --global core.editor "vim"
+     ```
+   - If you prefer Nano:
+     ```
+     git config --global core.editor "nano"
+     ```
+   - If you prefer Visual Studio Code:
+     ```
+     git config --global core.editor "code --wait"
+     ```
+   - If you prefer Notepad++ on Windows:
+     ```
+     git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+     ```
+
+3. **Verify Configuration**:
+   - You can verify that your editor is set correctly by running:
+     ```
+     git config --global core.editor
+     ```
+
+Now, when you use commands that require opening an editor (e.g., writing commit messages), Git will use your configured text editor.
+
+## Checking Your Settings
+
+To check your Git settings, you can use the `git config` command with various options to list specific configurations or display all configurations. Here's how you can check your Git settings:
+
+1. **List All Configurations**:
+   - Open a terminal or command prompt.
+   - Run the following command:
+     ```
+     git config --list
+     ```
+   - This command will display all Git configurations set on your system, including global, system, and local configurations.
+
+2. **Check Specific Configuration**:
+   - If you want to check a specific configuration, you can specify its key with the `--get` option.
+   - For example, to check your global user.name configuration:
+     ```
+     git config --get user.name
+     ```
+   - This command will display the value of the user.name configuration.
+
+3. **Check Local Configuration**:
+   - You can also check configurations set at the local repository level by navigating to the repository directory in your terminal and running the same `git config` commands without the `--global` option.
+   - For example, to check the user.name configuration for the current repository:
+     ```
+     git config --get user.name
+     ```
+   - This command will display the value of the user.name configuration specific to the current repository.
+
+*By using these commands, you can easily check and verify your Git settings to ensure they are correctly configured according to your preferences and workflow requirements.*
+
+## Git configuration levels
+
+Git supports three levels of configuration, which determine where the configuration settings are applied. These levels are:
+
+1. **Local Configuration**:
+   - Local configuration settings are specific to a particular Git repository. They are stored in the `.git/config` file within the repository directory.
+   - Settings configured at this level only apply to the repository in which they are set. They override higher-level configurations for that specific repository.
+   - Local configurations can be set using the `git config` command without the `--global` or `--system` options. For example:
+     ```
+     git config user.name "Your Name"
+     ```
+
+2. **Global Configuration**:
+   - Global configuration settings are applied to all repositories on your system. They are stored in the `.gitconfig` file in your home directory (`~/.gitconfig` or `%USERPROFILE%\.gitconfig` on Windows).
+   - Global configurations are useful for settings that you want to apply universally across all your Git repositories, such as your name and email address.
+   - Global configurations can be set using the `git config` command with the `--global` option. For example:
+     ```
+     git config --global user.name "Your Name"
+     ```
+
+3. **System Configuration**:
+   - System configuration settings are applied system-wide for all users on the system. They are stored in a system-level configuration file (e.g., `/etc/gitconfig` on Unix-based systems).
+   - System configurations are typically managed by administrators and are less commonly used by individual developers.
+   - System configurations can be set using the `git config` command with the `--system` option. For example:
+     ```
+     sudo git config --system core.editor "vim"
+     ```
+
+*When you set a configuration option, Git will use the value from the most specific configuration level available. Local configurations override global configurations, and global configurations override system configurations. This allows you to customize Git behavior at different levels depending on your needs.*
